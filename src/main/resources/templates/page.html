@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="pageDiv">
+    <link rel="stylesheet" href="lib/layer/ui/css/layui.css" media="all">
+    <script src="lib/layer/ui/layui.js"></script>
+    <div id="pageDiv"></div>
+
+
+    <script  th:inline="javascript">
+        var total = [[${page.total}]];
+        var pageSizse = [[${page.pageSize}]];
+        var pageNum =  [[${page.pageNum}]];
+        var url =  [[${url}]];
+    </script>
+
+    <script>
+        layui.use('laypage', function() {
+            var laypage = layui.laypage;
+
+            laypage.render({
+                elem : 'pageDiv'
+                ,count : total
+                ,limit : pageSizse
+                ,curr:pageNum
+                ,layout : [ 'prev', 'page', 'next', 'limit', 'count' ]
+                ,limits:[1,2,3,4,5,6,7,8,9,10]
+                ,jump : function(obj, first) {
+                    console.log(obj)
+                    if (!first) {
+                        location.href=url+"?pageNum="+obj.curr+"&pageSize="+obj.limit;
+                    }
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

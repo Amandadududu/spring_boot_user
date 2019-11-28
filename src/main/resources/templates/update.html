@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form method="post" th:action="|updateUserById?userId=${user.id}|">
+
+        <table border="1">
+
+            编号:<input th:type="text" th:value="${user.id}" th:name="id" readonly="readonly"/><br/>
+            姓名:<input th:type="text" th:value="${user.name}" th:name="name"/><br/>
+            年龄:<input th:type="text" th:value="${user.age}" th:name="age"/><br/>
+            生日:<input th:type="text" th:value="${#dates.format(user.birthday, 'yyyy-MM-dd')}" th:name="birthday"/><br/>
+            <input th:type="submit" th:value="修改"/>
+        </table>
+    </form>
+</body>
+</html>

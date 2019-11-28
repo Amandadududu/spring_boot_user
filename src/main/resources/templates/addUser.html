@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" th:action="addUser">
+
+    <table border="1">
+
+        姓名:<input th:type="text"  th:name="name"/><br/>
+        年龄:<input th:type="text" th:name="age"/><br/>
+        生日:<input th:type="text" th:name="birthday"/><br/>
+        <input th:type="submit" th:value="添加"/>
+    </table>
+</form>
+</body>
+</html>
